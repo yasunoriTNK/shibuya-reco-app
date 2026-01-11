@@ -28,8 +28,6 @@ def main():
     # サイドバーは削除（ローカル運用のため）
 
     if screen == 'quiz':
-
-    if screen == 'quiz':
         render_quiz()
     elif screen == 'home':
         render_home()
