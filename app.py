@@ -25,30 +25,9 @@ def main():
     # ルーティング
     screen = st.session_state.screen
 
-    # サイドバー（管理用・パスワード保護）
-    with st.sidebar:
-        with st.expander("管理メニュー"):
-            admin_password = st.text_input("管理者パスワード", type="password")
-            # 環境変数 ADMIN_PASSWORD が未設定の場合は "admin123" をデフォルトとする（デモ用）
-            correct_password = os.getenv("ADMIN_PASSWORD", "admin123")
-            
-            if admin_password == correct_password:
-                st.success("認証成功")
-                if st.button("質問データを更新（AI生成）", help="Excelのキーワードを元に、質問を再生成します。"):
-                    from ai.generator import generate_questions_from_data
-                    with st.spinner("AIが質問を考えています..."):
-                        result = generate_questions_from_data()
-                    if result["success"]:
-                        st.success(result["message"])
-                        st.cache_data.clear() # キャッシュクリア
-                        import time
-                        time.sleep(1)
-                        st.rerun()
-                    else:
-                        st.error(result["message"])
-                st.caption("※Excel (data/shibuya_spots.xlsx) を更新してから押してください。")
-            elif admin_password:
-                st.error("パスワードが違います")
+    # サイドバーは削除（ローカル運用のため）
+
+    if screen == 'quiz':
 
     if screen == 'quiz':
         render_quiz()
