@@ -121,7 +121,7 @@ def render_detail():
     
     col1, col2 = st.columns(2)
     with col1:
-        st.image("https://placehold.co/600x400?text=Movie+Placeholder", caption="30秒動画（ダミー）", use_container_width=True)
+        st.image("https://placehold.co/600x400?text=Movie+Placeholder", caption="30秒動画（ダミー）", width='stretch')
     with col2:
         st.subheader("🗣️ 地元民の一言")
         st.write(f"「{ai_info.get('local_tip', '')}」")
@@ -131,7 +131,7 @@ def render_detail():
 
     st.divider()
     
-    if st.button("🗺️ ここに行く（ルート案内）", type="primary", use_container_width=True):
+    if st.button("🗺️ ここに行く（ルート案内）", type="primary", width='stretch'):
         st.session_state.screen = 'route'
         st.rerun()
 
@@ -167,7 +167,7 @@ def render_route():
     
     st.divider()
     
-    if st.button("入店した（デモプレイ）", use_container_width=True):
+    if st.button("入店した（デモプレイ）", width='stretch'):
         st.balloons()
         st.success("店舗に通知しました！良い時間を！")
         time.sleep(3)

@@ -12,9 +12,7 @@ def render_option_card(label, key, on_click):
     """
     2択質問のカード（ボタン）を描画
     """
-    # 本当は画像を入れたいが、プロトタイプなので絵文字やテキストで代用
-    # use_container_width=True で幅いっぱいに
-    if st.button(label, key=key, use_container_width=True):
+    if st.button(label, key=key, width='stretch'):
         on_click()
 
 def render_spot_card(spot, on_detail_click):
@@ -26,7 +24,7 @@ def render_spot_card(spot, on_detail_click):
         st.caption(spot['タイプ'])
         
         # プレースホルダ画像
-        st.image("https://placehold.co/600x400?text=Shibu+Deep", use_container_width=True)
+        st.image("https://placehold.co/600x400?text=Shibu+Deep", width='stretch')
         
         # 説明（短め）
         st.write(spot['説明'])
@@ -38,10 +36,10 @@ def render_spot_card(spot, on_detail_click):
         
         col1, col2 = st.columns(2)
         with col1:
-            if st.button("詳細を見る", key=f"detail_{spot['No']}", use_container_width=True):
+            if st.button("詳細を見る", key=f"detail_{spot['No']}", width='stretch'):
                 on_detail_click(spot['No'])
         with col2:
-            st.button("保存", key=f"save_{spot['No']}", use_container_width=True, disabled=True, help="保存機能は未実装です")
+            st.button("保存", key=f"save_{spot['No']}", width='stretch', disabled=True, help="保存機能は未実装です")
 
 def render_header():
     """
